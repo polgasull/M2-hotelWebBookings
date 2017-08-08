@@ -1,0 +1,31 @@
+    <h2>Login</h2>
+<br><br>
+<form action="/auth/login" method="POST" id="form">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" placeholder="Your username here" required>
+
+        <br><br>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" placeholder="Your password here" required>
+            <% if (typeof message !== "undefined") { %>
+                <div class="error-message"><%= message %></div>
+            <% } %>
+        <br><br>
+        
+        <button>Acceder</button>
+
+        <br><br>
+
+        <p class="account-message">
+            ¿No estás registrado? 
+            <a href="/auth/signup">Regístrate aquí</a>
+        </p>
+        <br>
+        <p class="account-message">
+            ¿Perdido?
+            <a href="/"> Volver al menú principal  </a>
+        </p>
+
+</form> 
+  

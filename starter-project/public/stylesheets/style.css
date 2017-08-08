@@ -1,0 +1,172 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0%;
+  padding: 0%;
+  background-color: #FFFFFA;
+}
+
+h2 {
+  text-align: center;
+}
+
+.navbar {
+  margin: 0;
+  border: 0px;
+  background-color: #283E4A;
+  border-radius: 0px;
+}
+
+.index-title {
+  font-size: 60px;
+}
+
+.index-a {
+  color: white;
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+.navbarTitle {
+  color: white;
+  font-size: 30px;
+}
+
+.navbarTitle:hover, button .index-a:hover {
+  color: white;
+}
+
+.index-a:hover {
+  color: red;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+  text-decoration: none;
+}
+
+#form {
+  margin: 30px auto;
+  width: 380px;
+}
+
+#form label {
+  color: black;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 14px;
+}
+
+#form .checkin, #form .checkout {
+  color: white;
+}
+
+#form input,
+#form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  color: black;
+}
+
+#form button {
+  background: #337AB7;
+  border: 1px solid #337AB7;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%;
+}
+
+#form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background;
+}
+
+.header {
+  height: 470px;
+}
+
+.header-img img {
+  background-repeat: no-repeat;
+  width: 100%;
+  filter: brightness(70%);
+  height: 550px;
+
+}
+
+.mainPictureText {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  margin-top: 1px;
+  color: white;
+  position: absolute;
+  z-index: 1;
+}
+
+.aboutUs span {
+  border: 1px solid white;
+  padding: 7px 25px 7px 25px;
+}
+
+.features {
+  height: 300px;
+  text-align: center;
+  color: black;
+}
+
+.glyphicon-cloud,.glyphicon-star, .glyphicon-heart {
+  border-radius: 50%;
+  border: 5px solid black;
+  background-color: #E4F5E1; 
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+.roomPic {
+  width: 120px;
+}
+
+.roomList {
+  list-style-type: none;
+}
+
+.roomFile {
+  border: 1px solid black; 
+}
+
+.fbkLogo {
+  width: 30%;
+}
+
+.separator {
+  text-align: center;
+}
+
+.fa {
+  text-align: center;
+  padding-right: 15%;
+}
+
+.fbkBtn, .GoogleBtn {
+  padding-right: 6%;
+}
+

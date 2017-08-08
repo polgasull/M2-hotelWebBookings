@@ -1,0 +1,53 @@
+
+<br>
+<a href="/users"> <button class="btn btn-primary"> Volver a Usuarios </button>  </a>
+<h2> Actualizar datos de <%= editUser.name %> </h2>
+<br>
+
+<div class="container">
+    <form class="editForm" action="/users/<%= editUser._id %>" method="POST" id="form">
+      <table class="table table-hover table-responsive">  
+        <tbody>
+        <tr>
+            <td> <label for="username"> Nick Acceso Usuario: </label> </td>
+            <td> <input type="text" name="username" id="username" value="<%= editUser.username %>" required> </td>
+        </tr>  
+
+        <tr>
+            <td> <label for="name"> Nombre: </label> </td>
+            <td> <input type="text" name="name" id="name" value="<%= editUser.name %>"> </td>
+        </tr> 
+
+        <tr>
+            <td> <label for="surname"> Apellido: </label> </td>
+            <td> <input type="text" name="surname" id="surname" value="<%= editUser.surname %>"> </td>
+        </tr>  
+
+        <tr>
+            <td> <label for="country"> País de Origen: </label> </td>
+            <td> <input type="text" name="country" id="country" value="<%= editUser.country %>"> </td>
+        </tr> 
+
+        <tr>
+            <td> <label for="email"> Email: </label> </td>
+            <td> <input type="text" name="email" id="email" value="<%= editUser.email %>"> </td>
+        </tr>  
+
+        <tr>
+            <td> <label for="role"> Tipo de Administrador: </label> </td>
+            <td>
+                <select class="form-control" name="role" id="role" value="<%= editUser.role %>" required>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User </option>
+                </select>
+            </td>
+        </tr> 
+        
+        <tr>
+            <td colspan=2> <button> Guardar cambios </button> </td>
+        </tr>
+  
+        <tbody>
+      </table>
+    </form>
+</div>

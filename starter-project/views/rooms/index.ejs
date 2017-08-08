@@ -1,0 +1,51 @@
+<br>
+    <a href="/"> <button class="btn btn-primary"> Volver al menú principal </button>  </a> 
+    <a href="/rooms/new"> <button class="btn btn-primary"> Nueva habitación </button> </a>
+<h2> Habitaciones </h2>
+<br>
+    
+
+<div class="container-fluid container-users">
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+            <th>Imagen</th>
+            <th>Tipo </th>
+            <th>Categoría</th>
+            <th>Vista</th>
+            <th>Máximo de personas</th>
+            <th>Tamaño en m2</th>
+            <th>Tipo de cama</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            </tr>
+    </thead>
+    <% rooms.forEach((roomData) => { %>
+        <tbody>
+            <tr>
+            <td scope="row"><img class="roomPic" src="<%= roomData.photo %>" alt="roompicture"></td>
+            <td><%= roomData.type %> </td>
+            <td><%= roomData.category %></td>
+            <td><%= roomData.view %> </td>
+            <td><%= roomData.capacity %></td>
+            <td><%= roomData.size %></td>
+            <td><%= roomData.typeOfBed %></td>
+            <td><%= roomData.price %></td>
+            <td><%= roomData.description %></td>
+            <td>
+                <a href="/rooms/<%= roomData._id %>/edit"> 
+                    <button class="btn btn-primary"> Editar </button> 
+                </a>
+            </td>
+            <th>   
+                <form action="/rooms/<%= roomData._id %>/delete" method="POST">
+                    <button class="btn btn-danger" type="submit"> Borrar </button>
+                </form>
+            </th>
+            </tr>
+        </tbody>
+            <%  }); %>
+    </table>
+    
+</div>

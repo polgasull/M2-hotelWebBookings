@@ -1,0 +1,44 @@
+<br>
+<a href="/"> <button class="btn btn-primary"> Volver al menú principal </button>  </a> 
+<h2> Usuarios registrados </h2>
+<br>
+
+<div class="container container-users">
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+            <th>Nombre </th>
+            <th>Apellido </th>
+            <th>País de Origen</th>
+            <th>Email</th>
+            <th>Tipo de Administrador</th>
+            <th>Nombre de Usuario</th>
+            <th>Editar Usuario</th>
+            <th>Eliminar Usuario</th>
+            </tr>
+    </thead>
+    <% users.forEach((userData) => { %>
+        <tbody>
+            <tr>
+            <td scope="row"><%= userData.name %></td>
+            <td><%= userData.surname %></td>
+            <td><%= userData.country %></td>
+            <td><%= userData.email %></td>
+            <td><%= userData.role %></td>
+            <td><%= userData.username %></td>
+            <td>
+                <a href="/users/<%= userData._id %>/edit"> 
+                    <button class="btn btn-primary"> Editar </button> 
+                </a> 
+            </td>
+            <th>   
+                <form action="/users/<%= userData._id%>/delete" method="POST">
+                    <button class="btn btn-danger" type="submit"> Borrar </button>
+                </form>
+            </th>
+            </tr>
+        </tbody>
+            <%  }); %>
+    </table>
+</div>                

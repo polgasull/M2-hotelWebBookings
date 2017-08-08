@@ -1,0 +1,17 @@
+{
+  "name": "m2finalproject",
+  "description": "",
+  "main": "",
+  "authors": [
+    "polgasull <pol89.gn@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/polgasull/M2FinalProjectByPolGN",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
