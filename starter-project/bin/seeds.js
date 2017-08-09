@@ -39,9 +39,6 @@ const users = [
 },
 ];
 
-const date = new Date('2017-09-12')
-const date_2 = new Date('2017-09-13')
-
 const rooms = [
     {
     category: "Estándar",
@@ -53,7 +50,10 @@ const rooms = [
     description: "Encantadora habitación decorada con detalles rústicos",
     price: 100,
     photo: "http://maxpixel.freegreatpicture.com/static/photo/2x/New-Hotel-Guest-Room-1330846.jpg",
-    night: [{date: date,booked: true},{date: date_2, booked: false}]
+    nights: [
+      { date: new Date('2017-09-12'), booked: true }, 
+      { date: new Date('2017-09-13'), booked: false }
+    ]
     },
     {
     category: "Suite",
@@ -65,7 +65,10 @@ const rooms = [
     description: "Habitación de ensueño con bañera de hidromasaje",
     price: 200,
     photo: "http://maxpixel.freegreatpicture.com/static/photo/2x/Accommdation-Delhi-Near-Delhi-Igi-Airport-Hotel-Room-992296.jpg",
-    night: [{date: date,booked: false},{date: date_2, booked: false}]
+    nights: [
+      { date: new Date('2017-09-12'), booked: false },
+      { date: new Date('2017-09-13'), booked: false }
+    ]
     },
 ];
 

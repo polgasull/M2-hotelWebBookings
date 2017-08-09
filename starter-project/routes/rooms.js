@@ -30,6 +30,7 @@ router.post('/', (req, res, next) => {
     typeOfBed: req.body.typeOfBed,
     description: req.body.description,
     price: req.body.price,
+    nights: req.body.nights,
   };
 
 const newRoom = new Room(roomInfo);
