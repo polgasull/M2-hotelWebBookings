@@ -6,8 +6,9 @@ const Room = require("../models/room");
 
 
 router.post('/', (req, res, next) => {
-    const view = req.body.view
-    Room.find({ view: view}, (err, rooms) => {
+    const viewVar = req.body.view
+    const bookedVar = req.body.booked
+    Room.find({ booked: bookedVar}, (err, rooms) => {
         if (err) {
             next(err);
         }
