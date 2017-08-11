@@ -21,6 +21,7 @@
             <th>Descripción</th>
             <th> Noches </th>
             <th> Reservado </th>
+            <th> Fecha de llegada </th>
             </tr>
     </thead>
     <% rooms.forEach((roomData) => { %>
@@ -36,7 +37,8 @@
             <td><%= roomData.price %></td>
             <td><%= roomData.description %></td>
             <td><%= roomData.nights %> </td>
-            <td><%= roomData.nights.booked %> </td>
+            <td><%= roomData.nights  %> </td>
+            <td><%= roomData.date %> </td>
             <td>
                 <a href="/rooms/<%= roomData._id %>/edit"> 
                     <button class="btn btn-primary"> Editar </button> 

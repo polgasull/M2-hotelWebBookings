@@ -31,7 +31,8 @@ router.post('/', (req, res, next) => {
     description: req.body.description,
     price: req.body.price,
     nights: req.body.nights,
-    booked: req.body.nights.booked,
+    nights: {booked: req.body.booked },
+    date: {date: req.body.date},
   };
 
 const newRoom = new Room(roomInfo);

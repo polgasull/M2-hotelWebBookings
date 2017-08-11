@@ -7,17 +7,48 @@ const Room = require("../models/room");
 
 router.post('/', (req, res, next) => {
     const viewVar = req.body.view
-    const bookedVar = req.body.booked
-    Room.find({ booked: bookedVar}, (err, rooms) => {
+    const booked = req.body.booked
+    const checkInDate = req.body.checkInDate;
+    const checkOutDate = req.body.checkOutDate;
+    const nightDate = {"nights.date": new Date()};
+    const nightBooked = {"nights.booked": false};
+
+    // const bookedFalse = {"nights.booked": false};
+
+    Room.find({},(err, rooms) => {
         if (err) {
             next(err);
         }
-        else {
+        else if ({"nights.booked": false}) {
+            nightDate === checkInDate;
             res.render('rooms/index', { rooms });
         }
+        
     })
-    // const checkInDate = req.body.checkInDate;
-    // const checkOutDate = req.body.checkOutDate;
-})
+    })
+
+
+    // Room.find({"nights.date": checkInDate}, (err, rooms) => {
+    //     if ({"nights.booked": false}) {
+    //         res.render('rooms/index', { rooms });
+    //     }
+    //     else if (err) {
+    //         next(err);
+    //     }
+    // })
+    
+
+    // })
+
+//     Room.find({"nights.booked": booked}, (err, rooms) => {
+//         if (err) {
+//             next(err);
+//         }
+//         else {
+//             res.render('rooms/index', { rooms });
+//         }
+//     })
+    
+// })
 
 module.exports = router;
