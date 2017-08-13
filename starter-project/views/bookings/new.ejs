@@ -4,12 +4,12 @@
 <h2> Finaliza tu reserva </h2>
 
 <div class="container">
-    <form class="form" action="/bookings/success" method="POST" id="form">
+    <form class="form" action="/bookings/new" method="POST" id="form">
         <table class="table table-hover table-responsive">   
          <tbody>        
             <tr>
               <td> <label for="checkInDate"> Fecha de llegada: </label> </td>
-              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate" required>  
+              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate"  required>  
               </td>
             </tr>
             <tr>
@@ -38,6 +38,10 @@
               <td> <input type="text" name="email" id="email" required> </td>
             </tr>  
 
+            <% if (typeof message !== "undefined") { %>
+              <div class="error-message"><%= message %></div>
+            <% } %>
+            
             <tr>
                 <td colspan=2> <button> Confirmar reserva </button> </td>
             </tr>

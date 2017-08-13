@@ -23,22 +23,20 @@ router.post('/', (req, res, next) => {
 
 router.get('/new', (req, res, next) => {
     res.render('bookings/new');
-  })
+})
+
+router.post('/new', (req, res, next) => {
+    const checkInDate = req.body.checkInDate;
+    const checkOutDate = req.body.checkOutDate;
+    
+    const newBooking = Booking({
+        checkInDate: checkInDate,
+        checkOutDate: checkOutDate,
+    });
   
-router.post('/success', (req, res, next) => {
-    const bookingInfo = {
-      checkInDate: req.body.checkInDate,
-      checkOutDate: req.body.checkOutDate, 
-      name: req.body.name,
-      surname: req.body.surname,
-      country: req.body.country,
-      email: req.body.email,
-    };
-  
-    const newBooking = new Booking(bookingInfo);
-    newBooking.save( (err) => {
+    newBooking.save((err) => {
         if (err) { 
-            return next(err) 
+            res.render("bookings/new", { message: "Something went wrong" });
         } else {
             res.render('bookings/success');
         }
