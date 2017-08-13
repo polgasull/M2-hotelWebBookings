@@ -4,38 +4,38 @@
 <h2> Finaliza tu reserva </h2>
 
 <div class="container">
-    <form class="form" action="/bookings" method="POST" id="form">
+    <form class="form" action="/bookings/success" method="POST" id="form">
         <table class="table table-hover table-responsive">   
          <tbody>        
             <tr>
               <td> <label for="checkInDate"> Fecha de llegada: </label> </td>
-              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate" value="<% booking.checkInDate %>" required>  
+              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate" required>  
               </td>
             </tr>
             <tr>
               <td> <label for="checkOutDate"> Fecha de salida: </label> </td>
-              <td> <input disabled="disabled" type="date" name="checkOutDate" id="checkOutDate" value="<% booking.checkOutDate %>" required>
+              <td> <input disabled="disabled" type="date" name="checkOutDate" id="checkOutDate" required>
               </td>
             </tr>
             
             <tr>
               <td> <label for="name"> Nombre: </label> </td>
-              <td> <input type="text" name="name" id="name" value="<%= editUser.name %>"> </td>
+              <td> <input type="text" name="name" id="name" required> </td>
             </tr> 
 
             <tr>
               <td> <label for="surname"> Apellido: </label> </td>
-              <td> <input type="text" name="surname" id="surname" value="<%= editUser.surname %>"> </td>
+              <td> <input type="text" name="surname" id="surname" required> </td>
             </tr>  
 
             <tr>
               <td> <label for="country"> País de Origen: </label> </td>
-              <td> <input type="text" name="country" id="country" value="<%= editUser.country %>"> </td>
+              <td> <input type="text" name="country" id="country" required> </td>
             </tr> 
 
             <tr>
               <td> <label for="email"> Email: </label> </td>
-              <td> <input type="text" name="email" id="email" value="<%= editUser.email %>"> </td>
+              <td> <input type="text" name="email" id="email" required> </td>
             </tr>  
 
             <tr>

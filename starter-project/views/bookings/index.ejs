@@ -20,7 +20,7 @@
             <th>Descripción</th>
             </tr>
     </thead>
-    <% rooms.forEach((roomToBook) => { %>
+    <% bookings.forEach((roomToBook) => { %>
         <tbody>
             <tr>
             <td scope="row"><img class="roomPic" src="<%= roomToBook.photo %>" alt="roompicture"></td>
@@ -33,9 +33,7 @@
             <td> <%= roomToBook.price %> </td>
             <td> <%= roomToBook.description %> </td>
             <th>   
-                <form action="/bookings/new" method="POST">
-                    <button class="btn btn-success" type="submit"> Book </button>
-                </form>
+                <a href="/bookings/new"> <button class="btn btn-success"> Reservar </button> </a>
             </th>
             </tr>
         </tbody>
