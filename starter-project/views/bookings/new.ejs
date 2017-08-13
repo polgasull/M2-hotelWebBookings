@@ -1,0 +1,47 @@
+<br>
+    <a href="/bookings"> <button class="btn btn-primary"> Volver atrás </button></a>
+    
+<h2> Finaliza tu reserva </h2>
+
+<div class="container">
+    <form class="form" action="/bookings" method="POST" id="form">
+        <table class="table table-hover table-responsive">   
+         <tbody>        
+            <tr>
+              <td> <label for="checkInDate"> Fecha de llegada: </label> </td>
+              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate" value="<% booking.checkInDate %>" required>  
+              </td>
+            </tr>
+            <tr>
+              <td> <label for="checkOutDate"> Fecha de salida: </label> </td>
+              <td> <input disabled="disabled" type="date" name="checkOutDate" id="checkOutDate" value="<% booking.checkOutDate %>" required>
+              </td>
+            </tr>
+            
+            <tr>
+              <td> <label for="name"> Nombre: </label> </td>
+              <td> <input type="text" name="name" id="name" value="<%= editUser.name %>"> </td>
+            </tr> 
+
+            <tr>
+              <td> <label for="surname"> Apellido: </label> </td>
+              <td> <input type="text" name="surname" id="surname" value="<%= editUser.surname %>"> </td>
+            </tr>  
+
+            <tr>
+              <td> <label for="country"> País de Origen: </label> </td>
+              <td> <input type="text" name="country" id="country" value="<%= editUser.country %>"> </td>
+            </tr> 
+
+            <tr>
+              <td> <label for="email"> Email: </label> </td>
+              <td> <input type="text" name="email" id="email" value="<%= editUser.email %>"> </td>
+            </tr>  
+
+            <tr>
+                <td colspan=2> <button> Confirmar reserva </button> </td>
+            </tr>
+        </tbody>
+    </table>
+ </form>
+</div>
