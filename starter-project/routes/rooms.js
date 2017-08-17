@@ -20,7 +20,7 @@ router.get('/new', checkRoles('Admin'), (req, res, next) => {
   res.render('rooms/new');
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', checkRoles('Admin'), (req, res, next) => {
   const roomInfo = {
     category: req.body.category,
     type: req.body.type, 
@@ -30,9 +30,10 @@ router.post('/', (req, res, next) => {
     typeOfBed: req.body.typeOfBed,
     description: req.body.description,
     price: req.body.price,
-    nights: req.body.nights,
-    nights: { booked: req.body.booked },
-    date: { date: req.body.date},
+    nights: [
+        { booked: req.body.booked },
+        { date: req.body.date}
+    ] 
   };
 
 const newRoom = new Room(roomInfo);

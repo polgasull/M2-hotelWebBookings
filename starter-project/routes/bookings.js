@@ -11,12 +11,12 @@ router.post('/', (req, res, next) => {
     const nightDate = {"nights.date": new Date()};
     const nightBooked = {"nights.booked": false};
 
-    Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, bookings) => {
+    Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomBooking) => {
         if (err) {
             next(err);
         }
         else {
-            res.render('bookings/index', { bookings });
+            res.render('bookings/new', { roomBooking });
         }   
     })
 })
@@ -26,19 +26,18 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-    const checkInDate = req.body.checkInDate;
-    const checkOutDate = req.body.checkOutDate;
+    const bookingInfo = {
+        checkInDate: req.body.checkInDate,
+        checkOutDate: req.body.checkOutDate,       
+    }
     
-    const newBooking = Booking({
-        checkInDate: checkInDate,
-        checkOutDate: checkOutDate,
-    });
+    const newBooking = new Booking(bookingInfo);
   
     newBooking.save((err) => {
         if (err) { 
             res.render("bookings/new", { message: "Something went wrong" });
         } else {
-            res.render('bookings/success');
+            res.render('bookings/edit');
         }
     });
 });

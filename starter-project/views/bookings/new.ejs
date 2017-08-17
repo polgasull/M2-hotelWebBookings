@@ -1,51 +1,45 @@
 <br>
-    <a href="/bookings"> <button class="btn btn-primary"> Volver atrás </button></a>
+    <a href="/"> <button class="btn btn-primary"> Volver al menú principal </button>  </a> 
+
+<h2> Habitaciones Disponibles </h2>
+<br>
     
-<h2> Finaliza tu reserva </h2>
-
-<div class="container">
-    <form class="form" action="/bookings/new" method="POST" id="form">
-        <table class="table table-hover table-responsive">   
-         <tbody>        
+<div class="container-fluid container-users">
+ <form class="bookingForm" action="/bookings/new" method="POST" id="bookingForm">
+    <table class="table table-hover">
+        <thead>
             <tr>
-              <td> <label for="checkInDate"> Fecha de llegada: </label> </td>
-              <td> <input disabled="disabled" type="date" name="checkInDate" id="checkInDate"  required>  
-              </td>
+            <th>Imagen</th>
+            <th>Tipo </th>
+            <th>Categoría</th>
+            <th>Vista</th>
+            <th>Máximo de personas</th>
+            <th>Tamaño en m2</th>
+            <th>Tipo de cama</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th> Fecha seleccionada <th>
             </tr>
+    </thead>
+    <% roomBooking.forEach((roomToBook) => { %>
+        <tbody>
             <tr>
-              <td> <label for="checkOutDate"> Fecha de salida: </label> </td>
-              <td> <input disabled="disabled" type="date" name="checkOutDate" id="checkOutDate" required>
-              </td>
-            </tr>
-            
-            <tr>
-              <td> <label for="name"> Nombre: </label> </td>
-              <td> <input type="text" name="name" id="name" required> </td>
-            </tr> 
-
-            <tr>
-              <td> <label for="surname"> Apellido: </label> </td>
-              <td> <input type="text" name="surname" id="surname" required> </td>
-            </tr>  
-
-            <tr>
-              <td> <label for="country"> País de Origen: </label> </td>
-              <td> <input type="text" name="country" id="country" required> </td>
-            </tr> 
-
-            <tr>
-              <td> <label for="email"> Email: </label> </td>
-              <td> <input type="text" name="email" id="email" required> </td>
-            </tr>  
-
-            <% if (typeof message !== "undefined") { %>
-              <div class="error-message"><%= message %></div>
-            <% } %>
-            
-            <tr>
-                <td colspan=2> <button> Confirmar reserva </button> </td>
+            <td scope="row"><img class="roomPic" src="<%= roomToBook.photo %>" alt="roompicture"></td>
+            <td> <%= roomToBook.type %> </td>
+            <td> <%= roomToBook.category %> </td>
+            <td> <%= roomToBook.view %> </td>
+            <td> <%= roomToBook.capacity %> </td>
+            <td> <%= roomToBook.size %> </td>
+            <td> <%= roomToBook.typeOfBed %> </td>
+            <td> <%= roomToBook.price %> </td>
+            <td> <%= roomToBook.description %> </td>
+            <td> <%= roomToBook.nights %> </td>
+            <th>   
+                <button class="btn btn-success"> Reservar </button>
+            </th>
             </tr>
         </tbody>
+            <%  }); %>
     </table>
  </form>
 </div>
