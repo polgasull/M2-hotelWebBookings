@@ -1,0 +1,47 @@
+<br>
+    <a href="/"> <button class="btn btn-primary"> Volver al menú principal </button>  </a> 
+
+<h2> Habitaciones Disponibles </h2>
+<br>
+    
+<div class="container-fluid container-users">
+
+<th> Fecha seleccionada <th>
+<td> <%= roomAvailable.date %> </td>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>Imagen</th>
+            <th>Tipo </th>
+            <th>Categoría</th>
+            <th>Vista</th>
+            <th>Máximo de personas</th>
+            <th>Tamaño en m2</th>
+            <th>Tipo de cama</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th> Fecha seleccionada <th>
+            </tr>
+    </thead>
+    <% roomAvailable.forEach((roomToBook) => { %>
+        <tbody>
+            <tr>
+            <td scope="row"><img class="roomPic" src="<%= roomToBook.photo %>" alt="roompicture"></td>
+            <td> <%= roomToBook.type %> </td>
+            <td> <%= roomToBook.category %> </td>
+            <td> <%= roomToBook.view %> </td>
+            <td> <%= roomToBook.capacity %> </td>
+            <td> <%= roomToBook.size %> </td>
+            <td> <%= roomToBook.typeOfBed %> </td>
+            <td> <%= roomToBook.price %> </td>
+            <td> <%= roomToBook.description %> </td>
+            <td> <%= roomToBook.nights %> </td>
+            <th>   
+               <a href="/bookings/new"> <button class="btn btn-success"> Reservar </button> </a>
+            </th>
+            </tr>
+        </tbody>
+            <%  }); %>
+    </table>
+</div>

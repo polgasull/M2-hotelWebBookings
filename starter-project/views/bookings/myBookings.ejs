@@ -1,0 +1,35 @@
+<br>
+    <a href="/"> <button class="btn btn-primary"> Volver al menú principal </button>  </a> 
+
+<h2> Mis Reservas </h2>
+<br>
+    
+<div class="container container-myBookings">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>Fecha de llegada </th>
+            <th>Fecha de Salida </th>
+            <th>Categoría habitación reservada </th>
+            <th>Nombre </th>
+            <th>Apellido</th>
+            <th>Email </th>
+            <th>Total Reserva </th>
+            </tr>
+    </thead>
+    <% myBookings.forEach((myBookings) => { %>
+        <tbody>
+            <tr>
+            <td> <%= myBookings.checkInDate %> </td>
+            <td> <%= myBookings.checkOutDate %> </td>
+            <td> <%= myBookings.category %> </td>
+            <td> <%= myBookings.name %> </td>
+            <td> <%= myBookings.surname %> </td>
+            <td> <%= myBookings.email %> </td>
+            <td> <%= myBookings.totalPrice %> </td>
+            </tr>
+        </tbody>
+            <%  }); %>
+    </table>
+</div>

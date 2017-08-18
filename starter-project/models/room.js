@@ -17,7 +17,8 @@ const roomSchema = new Schema({
     }],
     nights: [{
         date: Date,
-        booked: Boolean
+        booked: Boolean,
+        default: false
     }]
 });
 

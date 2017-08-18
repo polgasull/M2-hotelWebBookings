@@ -11,18 +11,22 @@ router.post('/', (req, res, next) => {
     const nightDate = {"nights.date": new Date()};
     const nightBooked = {"nights.booked": false};
 
-    Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomBooking) => {
+    Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomAvailable) => {
         if (err) {
             next(err);
         }
         else {
-            res.render('bookings/new', { roomBooking });
+            res.render('bookings/roomAvailable', { roomAvailable });
         }   
     })
-})
+});
 
 router.get('/new', (req, res, next) => {
-    res.render('bookings/new');
+    if (req.isAuthenticated()) {
+        res.render('bookings/new');
+    } else {
+        res.redirect('/auth/login');
+    }
 })
 
 router.post('/new', (req, res, next) => {
@@ -30,16 +34,29 @@ router.post('/new', (req, res, next) => {
         checkInDate: req.body.checkInDate,
         checkOutDate: req.body.checkOutDate,       
     }
-    
+
     const newBooking = new Booking(bookingInfo);
   
     newBooking.save((err) => {
         if (err) { 
             res.render("bookings/new", { message: "Something went wrong" });
-        } else {
-            res.render('bookings/edit');
+        } 
+        else {
+            res.render('bookings/success');
         }
     });
 });
+
+router.get('/myBookings', (req, res, next) => {
+    Booking.find({}, (err, myBookings) => {
+        if (err) {
+            next(err);
+        }
+        else {
+            res.render('bookings/myBookings', { myBookings })
+        }
+    })
+})
+
 
 module.exports = router;
