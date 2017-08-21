@@ -30,16 +30,13 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-    const bookingInfo = {
-        checkInDate: req.body.checkInDate,
-        checkOutDate: req.body.checkOutDate,       
-    }
+    const checkInDate = { nights: [
+        { date: req.body.date } 
+    ]}
 
-    const newBooking = new Booking(bookingInfo);
-  
-    newBooking.save((err) => {
+    Room.update({"nights.date": checkInDate, "nights.booked": true}, (err) => {
         if (err) { 
-            res.render("bookings/new", { message: "Something went wrong" });
+            next(err);
         } 
         else {
             res.render('bookings/success');

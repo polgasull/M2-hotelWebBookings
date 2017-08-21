@@ -31,8 +31,7 @@ router.post('/', checkRoles('Admin'), (req, res, next) => {
     description: req.body.description,
     price: req.body.price,
     nights: [
-        { booked: req.body.booked },
-        { date: req.body.date}
+        { booked: req.body.booked, date: req.body.date},
     ] 
   };
 
@@ -70,8 +69,7 @@ router.post('/:id', checkRoles('Admin'), (req, res, next) => {
       description: req.body.description,
       price: req.body.price,
       nights: [
-        { booked: req.body.booked },
-        { date: req.body.date}
+        { booked: req.body.booked, date: req.body.date},
     ] 
   };
     Room.findByIdAndUpdate(roomID, updates, (err, editRoom) => {
@@ -82,6 +80,34 @@ router.post('/:id', checkRoles('Admin'), (req, res, next) => {
         }
     })
 });
+
+router.get('/:id/editStock', checkRoles('Admin'), (req, res, next) => {
+    const roomID = req.params.id;
+    Room.findById(roomID, (err, editStock) => {
+        if (err) {
+            next(err)
+        } else  {
+            res.render('rooms/editStock', {editStock});
+        }
+    })
+})
+
+router.post('/:id/stock', checkRoles('Admin'), (req, res, next) => {
+    const roomID = req.params.id;
+    const updates = {
+      nights: [
+        { booked: req.body.booked, date: req.body.date},
+    ] 
+  };
+    Room.findByIdAndUpdate(roomID, updates, (err, editStock) => {
+        if (err) {
+            next(err)
+        } else {
+            res.redirect('/rooms');
+        }
+    })
+});
+
 
 router.post('/:id/delete', checkRoles('Admin'), (req, res, next) => {
     const roomID = req.params.id;

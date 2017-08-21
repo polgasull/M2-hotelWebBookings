@@ -1,11 +1,11 @@
 <br>
     <a href="/rooms"> <button class="btn btn-primary"> Volver a Habitaciones </button> </a>
-<h2> Editar información de la habitación <%= editRoom.category %> </h2>
+<h2> Editar información de la habitación <%= editRoom.type %> <%= editRoom.category %> <%= editRoom.view %> </h2>
 <br>
 
-<div class="container">
+<div class="container-fluid">
     <form class="form" action="/rooms/<%= editRoom._id %>" method="POST" id="form">
-      <table class="table table-hover table-responsive">  
+      <table class="table table-hover">  
         <tbody>
          <tr>
             <td> <label for="category"> Categoría: </label> </td>
@@ -35,13 +35,13 @@
          </tr> 
 
          <tr>
-            <td> <label for="capacity"> Màximo de personas: </label> </td>
-            <td> <input type="Number" name="capacity" id="capacity" value="<%= editRoom.capacity %>" required> </td>
+            <td> <label for="capacity"> Màx. pax: </label> </td>
+            <td> <input type="number" name="capacity" id="capacity" value="<%= editRoom.capacity %>" required> </td>
          </tr> 
         
          <tr>
             <td> <label for="size"> Tamaño en m2: </label> </td>
-            <td> <input type="Number" name="size" id="size" value="<%= editRoom.size %>" required> </td>
+            <td> <input type="number" name="size" id="size" value="<%= editRoom.size %>" required> </td>
          </tr> 
 
          <tr>
@@ -62,9 +62,9 @@
 
          <tr>
             <td> <label for="price"> Precio: </label> </td>
-            <td> <input type="Number" name="price" id="price" value="<%= editRoom.price %>" required> </td>
+            <td> <input type="number" name="price" id="price" value="<%= editRoom.price %>" required> </td>
          </tr>
-         
+        
          <tr>
             <td colspan=2> <button> Guardar cambios </button> </td>
          </tr>

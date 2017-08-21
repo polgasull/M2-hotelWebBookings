@@ -13,7 +13,7 @@
             <th>Tipo </th>
             <th>Categoría</th>
             <th>Vista</th>
-            <th>Máximo de personas</th>
+            <th>Màx. pax</th>
             <th>Tamaño en m2</th>
             <th>Tipo de cama</th>
             <th>Precio</th>
@@ -37,11 +37,14 @@
             <td><%= roomData.price %></td>
             <td><%= roomData.description %></td>
             <td><%= roomData.nights %> </td>
-            <td><%= bookedRooms  %> </td>
-            <td><%= roomData.date %> </td>
             <td>
                 <a href="/rooms/<%= roomData._id %>/edit"> 
                     <button class="btn btn-primary"> Editar </button> 
+                </a>
+            </td>
+            <td>
+                <a href="/rooms/<%= roomData._id %>/editStock"> 
+                    <button class="btn btn-primary"> Stock </button> 
                 </a>
             </td>
             <th>   
