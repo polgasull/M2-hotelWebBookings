@@ -16,10 +16,13 @@ router.get('/signup', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
+    const name = req.body.name;
+    const country = req.body.country;
+    const email = req.body.email;
 
     User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render("auth/signup", { message: "El nombre de usuario ya existe" });
       return;
     }
 
@@ -28,12 +31,15 @@ router.post('/signup', (req, res, next) => {
 
     const newUser = User({
       username: username,
-      password: hashPass
+      password: hashPass,
+      name: name,
+      country: country,
+      email: email
     });
 
     newUser.save((err) => {
       if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
+        res.render("auth/signup", { message: "Algo ha ido mal, vuelve a probar" });
       } else {
         res.redirect("/");
       }

@@ -1,11 +1,20 @@
   <h2>Signup</h2>
 <br><br>
     <form action="/auth/signup" method="POST" id="form">
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username" placeholder="Your username here" required>
-    <br><br>
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" placeholder="Your password here" required>
+    <label for="username">Nombre de Usuario </label>
+        <input id="username" type="text" name="username" placeholder="Nombre de Usuario" required>
+        <br><br>
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" name="password" placeholder="Contraseña" required>
+        <br><br>
+        <label for="name">Nombre </label>
+        <input id="name" type="text" name="name" placeholder="¿Cómo te llamas?" required>
+        <br><br>
+        <label for="country">País de Origen</label>
+        <input id="country" type="text" name="country" placeholder="¿En qué país naciste?" required>
+        <br><br>
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" placeholder="Email dónde recibirás las reservas" required>
     
     <% if (typeof message !== "undefined") { %>
         <div class="error-message"><%= message %></div>
@@ -15,14 +24,12 @@
     <button> Crear cuenta </button>
     <br><br>
     <p class="account-message">
-        ¿Ya estás registrado?
-        <a href="/auth/login">Login</a>
+        ¿Ya estás registrado? <a href="/auth/login">Login</a>
     </p>
     <br>
 
     <p class="account-message">
-        ¿Perdido?
-        <a href="/"> Volver al menú principal  </a>
+        ¿Perdido? <a href="/"> Volver al menú principal  </a>
     </p>
 
     </form>
