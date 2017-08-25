@@ -18,7 +18,7 @@
             <th>Tipo de cama</th>
             <th>Precio</th>
             <th>Descripción</th>
-            <th> Fecha seleccionada <th>
+            <th> Selecciona <th>
             </tr>
     </thead>
     <% roomAvailable.forEach((roomToBook) => { %>
@@ -34,7 +34,12 @@
             <td> <%= roomToBook.price %> </td>
             <td> <%= roomToBook.description %> </td>
         <form class="form" action="/bookings/new" method="POST" id="form">    
-            <td> <%= JSON.stringify(roomToBook, ['nights', 'date']) %> </td>
+            <td>
+                <select class="form-control" name="booked" id="booked" type="boolean" value="<%= roomToBook.nights.booked %>" required>
+                    <option value="true"> 1 </option>
+                    <option value="false"> 0 </option>
+                </select>
+            </td>
             <th>   
                <button class="btn btn-success"> Reservar </button>
             </th>

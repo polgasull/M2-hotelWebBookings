@@ -30,11 +30,11 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', (req, res, next) => {
-    const checkInDate = { nights: [
-        { date: req.body.date } 
-    ]}
+    const roomInfo = {
+        nights: [{ booked: req.body.booked }]
+    };
 
-    Room.update({"nights.date": checkInDate, "nights.booked": true}, (err) => {
+    Room.update({roomInfo}, (err) => {
         if (err) { 
             next(err);
         } 
