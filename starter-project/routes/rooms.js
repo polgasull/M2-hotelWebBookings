@@ -94,12 +94,12 @@ router.get('/:id/editStock', checkRoles('Admin'), (req, res, next) => {
 
 router.post('/:id/stock', checkRoles('Admin'), (req, res, next) => {
     const roomID = req.params.id;
-    const updates = {
-      nights: [
-        { booked: req.body.booked, date: req.body.date},
-    ] 
-  };
-    Room.findByIdAndUpdate(roomID, updates, (err, editStock) => {
+//     const updates = {
+//       nights: [
+//         { booked: req.body.booked, date: req.body.date},
+//     ] 
+//   };
+    Room.findByIdAndUpdate(roomID, {$pushAll: {nights: [{ booked: req.body.booked, date: req.body.date}]}}, (err, editStock) => {
         if (err) {
             next(err)
         } else {
