@@ -10,6 +10,9 @@ router.post('/', (req, res, next) => {
     const checkOutDate = req.body.checkOutDate;
     const nightDate = {"nights.date": new Date()};
     const nightBooked = {"nights.booked": false};
+    const updates = {
+        nights: [{ booked: req.body.booked }]
+        };
 
     Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomAvailable) => {
         if (err) {
@@ -21,30 +24,29 @@ router.post('/', (req, res, next) => {
     })
 });
 
-router.get('/new', (req, res, next) => {
-    if (req.isAuthenticated()) {
-        res.render('bookings/new');
-    } else {
-        res.redirect('/auth/login');
-    }
-})
+// router.get('/new', (req, res, next) => {
+//     if (req.isAuthenticated()) {
+//         res.render('bookings/new');
+//     } else {
+//         res.redirect('/auth/login');
+//     }
+// })
 
 router.post('/new', (req, res, next) => {
     const roomInfo = {
         nights: [{ booked: req.body.booked }]
     };
-
-    Room.update({roomInfo}, (err) => {
+    Room.update(roomInfo, (err, roomAvailable) => {
         if (err) { 
             next(err);
         } 
         else {
-            res.render('bookings/success');
+            res.render('bookings/success', {roomAvailable});
         }
-    });
+    });  
 });
 
-router.get('/myBookings', (req, res, next) => {
+router.get('/myBookings', checkRoles('Admin'), (req, res, next) => {
     Booking.find({}, (err, myBookings) => {
         if (err) {
             next(err);
@@ -55,5 +57,14 @@ router.get('/myBookings', (req, res, next) => {
     })
 })
 
+function checkRoles(role) {
+    return function(req, res, next) {
+      if (req.isAuthenticated() && req.user.role === role) {
+        return next(); 
+      } else {
+        res.redirect('/auth/login');
+      }
+    }
+  }
 
 module.exports = router;
