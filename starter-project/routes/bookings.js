@@ -36,12 +36,15 @@ router.post('/new', (req, res, next) => {
     const roomInfo = {
         nights: [{ booked: req.body.booked, date: req.body.date }]
     };
-    Room.update(roomInfo, (err, roomAvailable) => {
+    Room.update(roomInfo, (err) => {
         if (err) { 
             next(err);
+        }  
+        if (req.isAuthenticated()) {
+            res.render('bookings/success');
         } 
         else {
-            res.render('bookings/success', {roomAvailable});
+            res.redirect('/auth/login');
         }
     });  
 });

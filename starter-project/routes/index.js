@@ -6,10 +6,12 @@ const ensureLogin = require("connect-ensure-login");
 /* GET home page. */
 router.get('/', (req, res, next) => {
     if (req.isAuthenticated()) {   
-        res.render('index');
-        $(".loginBtn, .signUpBtn").hide(); 
+        res.render('index'); 
+        // $(".loginBtn, .signUpBtn").hide();
+        // $(".myBookBtn, .roomsBtn, .usersBtn").show();
     } else {
         res.render('index');
+        
     }
 });
 
