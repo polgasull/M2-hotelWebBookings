@@ -8,35 +8,24 @@ const User = require("../models/user");
 router.post('/', (req, res, next) => {
     const checkInDate = req.body.checkInDate;
     const checkOutDate = req.body.checkOutDate;
-    const nightDate = {"nights.date": new Date()};
-    const nightBooked = {"nights.booked": false};
-    const updates = {
-        nights: [{ booked: req.body.booked }]
-        };
 
     Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomAvailable) => {
         if (err) {
             next(err);
         }
         else {
-            res.render('bookings/roomAvailable', { roomAvailable });
+            res.render('bookings/roomAvailable', { roomAvailable, checkInDate });
         }   
     })
 });
 
-// router.get('/new', (req, res, next) => {
-//     if (req.isAuthenticated()) {
-//         res.render('bookings/new');
-//     } else {
-//         res.redirect('/auth/login');
-//     }
-// })
 
-router.post('/new', (req, res, next) => {
-    const roomInfo = {
-        nights: [{ booked: req.body.booked, date: req.body.date }]
-    };
-    Room.update(roomInfo, (err) => {
+router.post('/:id/new', (req, res, next) => {
+    console.log(req.body, "holi");
+    const roomID = req.params.id;
+    const checkInDate = req.body.checkInDate;
+
+    Room.findByIdAndUpdate(roomID, {nights: [{date: checkInDate, booked: req.body.booked}]}, (err) => {
         if (err) { 
             next(err);
         }  

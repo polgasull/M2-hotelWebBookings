@@ -11,10 +11,6 @@ const roomSchema = new Schema({
     description: String,
     price: Number,
     photo: String,
-    bookings: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Booking'
-    }],
     nights: [{
         date: Date,
         booked: Boolean,

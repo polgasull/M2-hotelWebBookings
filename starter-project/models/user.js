@@ -8,10 +8,6 @@ const userSchema = new Schema({
   country: String,
   email: String,
   password: String,
-  bookings: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Booking'
-    }],
   role: {
     type: String,
     enum : ['User', 'Admin'],

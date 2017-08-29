@@ -3,8 +3,10 @@
 
 <h2> Habitaciones Disponibles </h2>
 <br>
-    
+
 <div class="container-fluid container-users">
+
+<h4> Fecha seleccionada: <%= checkInDate %>  </h4>
 
     <table class="table table-hover">
         <thead>
@@ -33,12 +35,13 @@
             <td> <%= roomToBook.typeOfBed %> </td>
             <td> <%= roomToBook.price %> </td>
             <td> <%= roomToBook.description %> </td>
-        <form class="form" action="/bookings/new" method="POST" id="form">    
+        <form class="form" action="/bookings/<%= roomToBook._id %>/new" method="POST" id="form">    
             <td>
-                <select class="form-control" name="booked" id="booked" type="boolean" value="<%= roomToBook.nights.booked %>" required>
+                <select class="form-control" name="booked" id="booked" type="boolean" required>
                     <option value="true"> 1 </option>
                     <option value="false"> 0 </option>
                 </select>
+                <input type="hidden" name="checkInDate" id="surname" value="<%= checkInDate %>">
             </td>
             <th>   
                <button class="btn btn-success"> Reservar </button>
