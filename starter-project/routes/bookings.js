@@ -19,13 +19,12 @@ router.post('/', (req, res, next) => {
     })
 });
 
-
 router.post('/:id/new', (req, res, next) => {
     console.log(req.body, "holi");
     const roomID = req.params.id;
-    const checkInDate = req.body.checkInDate;
+    const checkInDate = req.body.checkInDate; 
 
-    Room.findByIdAndUpdate(roomID, {nights: [{date: checkInDate, booked: req.body.booked}]}, (err) => {
+    Room.findByIdAndUpdate(roomID, {$addToSet: {nights: {date: checkInDate, booked: req.body.booked}}}, (err) => {
         if (err) { 
             next(err);
         }  

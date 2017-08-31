@@ -68,9 +68,6 @@ router.post('/:id', checkRoles('Admin'), (req, res, next) => {
       typeOfBed: req.body.typeOfBed,
       description: req.body.description,
       price: req.body.price,
-      nights: [
-        { booked: req.body.booked, date: req.body.date},
-    ] 
   };
     Room.findByIdAndUpdate(roomID, updates, (err, editRoom) => {
         if (err) {
