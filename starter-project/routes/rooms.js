@@ -5,6 +5,16 @@ const ensureLogin = require("connect-ensure-login");
 
 const Room = require("../models/room");
 
+// function checkIfIsLogged(user) {
+//     return function(req, res, next) {
+//       if (req.isAuthenticated() && req.user.role === role) {
+//         return next(); 
+//       } else {
+//         res.redirect('/auth/login');
+//       }
+//     }
+//   }
+
 router.get('/', checkRoles('Admin'), (req, res, next) => {
     Room.find({}, (err, rooms) => {
         if (err) {

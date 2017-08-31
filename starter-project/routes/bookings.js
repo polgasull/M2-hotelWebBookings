@@ -24,15 +24,19 @@ router.post('/:id/new', (req, res, next) => {
     const roomID = req.params.id;
     const checkInDate = req.body.checkInDate; 
 
-    Room.findByIdAndUpdate(roomID, {$addToSet: {nights: {date: checkInDate, booked: req.body.booked}}}, (err) => {
+    Room.findById(roomID, (err, room) => {
+
         if (err) { 
             next(err);
         }  
-        if (req.isAuthenticated()) {
-            res.render('bookings/success');
-        } 
         else {
-            res.redirect('/auth/login');
+            console.log("checkin: ", checkInDate);
+            console.log("Room: ", room);
+            const dateToBook = room.nights.find(night => night.date === checkInDate);
+            console.log('Soy la noche que buscas nene', dateToBook);
+            dateToBook.booked = true; 
+
+            res.render('bookings/success');
         }
     });  
 });
