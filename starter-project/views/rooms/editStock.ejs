@@ -3,7 +3,7 @@
 <h2> Modificar el stock de la habitación <%= editStock.type %> <%= editStock.category %> <%= editStock.view %>  </h2>
 <br>
 
-<div class="container-fluid">
+<div class="container">
     <form class="form" action="/rooms/<%= editStock._id %>/stock" method="POST" id="form">
       <table class="table table-hover">  
         <tbody>
@@ -26,7 +26,29 @@
             <td colspan=2> <button> Guardar cambios </button> </td>
          </tr>
 
-    <tbody>
-  </table>
- </form>
+        <tbody>
+      </table>
+    </form>
 </div>
+
+<div class="container showDates">
+      <table class="table table-hover">  
+        <thead>
+            <tr>
+            <th>Fecha</th>
+            <th>Reservado</th>
+            </tr>
+        </thead>
+
+         <% editStock.nights.forEach((nightData) => { %>
+        <tbody>
+            <tr>
+            <td><%= nightData.date %> </td>
+            <td><%= nightData.booked %> </td>
+            </tr>
+        </tbody>
+            <%  }); %>
+
+        <tbody>
+      </table>
+ </div>
