@@ -9,7 +9,7 @@ router.post('/', (req, res, next) => {
     const checkInDate = req.body.checkInDate;
     const checkOutDate = req.body.checkOutDate;
 
-    Room.find({"nights.date": checkInDate, "nights.booked": false}, (err, roomAvailable) => {
+    Room.find({nights: {$elemMatch: {date: checkInDate, booked: false}}}, (err, roomAvailable) => {
         if (err) {
             next(err);
         }
@@ -23,6 +23,7 @@ router.post('/:id/new', (req, res, next) => {
     console.log(req.body, "holi");
     const roomID = req.params.id;
     const checkInDate = req.body.checkInDate; 
+    const bookedSwitch = req.body.booked;
 
     Room.findById(roomID, (err, room) => {
         if (err) { 
@@ -33,7 +34,7 @@ router.post('/:id/new', (req, res, next) => {
             console.log("Room: ", room);
             const dateToBook = room.nights.find(night => night.date === checkInDate);
             console.log('Soy la noche que buscas:', dateToBook);
-            dateToBook.booked = true; 
+            dateToBook.booked = bookedSwitch; 
             console.log("After save: ", room);
             room.save((err) => {
                 if (err) {
@@ -42,19 +43,6 @@ router.post('/:id/new', (req, res, next) => {
                     res.render('bookings/success');
                 }
             });
-            
-            // night => night.date === checkInDate
-
-            // room.nights.findOne({date: checkInDate}, (err,night)=> {
-            //     if (err){
-            //         next(err);
-            //     } else {
-            //         night.booked = true;
-            //         night.save(function(){
-            //             res.render('bookings/success');
-            //         })
-            //     }
-            // });
         }
     });  
 });
