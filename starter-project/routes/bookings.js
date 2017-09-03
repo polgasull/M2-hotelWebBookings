@@ -25,7 +25,6 @@ router.post('/:id/new', (req, res, next) => {
     const checkInDate = req.body.checkInDate; 
 
     Room.findById(roomID, (err, room) => {
-
         if (err) { 
             next(err);
         }  
@@ -33,10 +32,29 @@ router.post('/:id/new', (req, res, next) => {
             console.log("checkin: ", checkInDate);
             console.log("Room: ", room);
             const dateToBook = room.nights.find(night => night.date === checkInDate);
-            console.log('Soy la noche que buscas nene', dateToBook);
+            console.log('Soy la noche que buscas:', dateToBook);
             dateToBook.booked = true; 
+            console.log("After save: ", room);
+            room.save((err) => {
+                if (err) {
+                    next(err);
+                } else {
+                    res.render('bookings/success');
+                }
+            });
+            
+            // night => night.date === checkInDate
 
-            res.render('bookings/success');
+            // room.nights.findOne({date: checkInDate}, (err,night)=> {
+            //     if (err){
+            //         next(err);
+            //     } else {
+            //         night.booked = true;
+            //         night.save(function(){
+            //             res.render('bookings/success');
+            //         })
+            //     }
+            // });
         }
     });  
 });

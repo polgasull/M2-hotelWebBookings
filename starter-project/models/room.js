@@ -12,7 +12,7 @@ const roomSchema = new Schema({
     price: Number,
     photo: String,
     nights: [{
-        date: Date,
+        date: String,
         booked: Boolean,
         default: false
     }]
