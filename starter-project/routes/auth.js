@@ -76,7 +76,10 @@ router.post("/login", passport.authenticate("local", {
 );
 
 router.get("/logout", (req, res, next) => {
+  console.log('soy una mierda');
   req.logout();
+  delete res.locals.currentUser;
+  delete req.session.passport;
   res.redirect("/");
 });
 

@@ -7,22 +7,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel='stylesheet' href='http://localhost:3000/font-awesome/css/font-awesome.min.css'/>
   <link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css">
-  <title>My first hotel website</title>
+  <title> Hotel Test</title>
 </head>
 <body>
 
 <nav class="navbar fixed-top">
   <div class="container-fluid">
-    <a class="navbarTitle" href="/">Bienvenido a Hotel Test </a> 
-      <div class="navbar-header navbar-right">
-        <% if (!checkIfIsLogged) { %>
+    <a class="navbarTitle" href="/">Bienvenido <% if (isUserLoggedIn) { %> <%= currentUser.name %> <% } %> a Hotel Test Resort  </a> 
+    <div class="navbar-header navbar-right">
+      <% if (isUserLoggedIn) { %>
+        <a class="index-a" href="/auth/logout"> <button type="button" class="btn btn-primary roomsBtn"> Cerrar Sesión </button> </a> 
+             <% if (isUserLoggedIn && currentUser.role === 'Admin') { %>
+            <a class="index-a" href="/rooms"> <button type="button" class="btn btn-primary roomsBtn"> Rooms </button> </a> 
+            <a class="index-a" href="/users"> <button type="button" class="btn btn-primary usersBtn"> Usuarios </button> </a> 
+            <a class="index-a" href="/bookings/myBookings"> <button type="button" class="btn btn-primary myBookBtn"> Mis reservas </button> </a>
+             <% } %>
+        <% } else { %>
+
         <button type="button" class="btn btn-primary signUpBtn" data-toggle="modal" data-target="#signUpModal"> Regístrate </button> 
         <button type="button" class="btn btn-primary loginBtn" data-toggle="modal" data-target="#loginModal"> Iniciar Sesión </button>
-        <% } if (checkIfIsLogged) { %>
-        <a class="index-a" href="/rooms"> <button type="button" class="btn btn-primary roomsBtn"> Rooms </button> </a> 
-        <a class="index-a" href="/users"> <button type="button" class="btn btn-primary usersBtn"> Usuarios </button> </a> 
-        <a class="index-a" href="/bookings/myBookings"> <button type="button" class="btn btn-primary myBookBtn"> Mis reservas </button> </a> 
-        <a class="index-a" href="/auth/logout"> <button type="button" class="btn btn-primary roomsBtn"> Cerrar Sesión </button> </a> 
+
         <% } %>
 
         

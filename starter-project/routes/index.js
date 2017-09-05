@@ -7,10 +7,8 @@ const User = require('../models/user');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    const checkIfIsLogged = req.user;
-    console.log('roleplayer', checkIfIsLogged)
-
-    res.render('index', {checkIfIsLogged});
+    console.log('Usuario conectado:', req.user)
+    res.render('index');
 
 });
 

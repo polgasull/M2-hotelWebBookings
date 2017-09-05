@@ -11,6 +11,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const helper = require('./routes/authHelper');
 const flash = require("connect-flash");
 const FbStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
@@ -64,6 +65,8 @@ passport.deserializeUser((id, cb) => {
 });
 
 app.use(flash());
+
+// passport configuration
 passport.use(new LocalStrategy({passReqToCallback: true }, (req, username, password, next) => {
   User.findOne({ username }, (err, user) => {
     if (err) {
@@ -137,6 +140,8 @@ passport.use(new GoogleStrategy({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(helper.setCurrentUser);
 
 //routes
 app.use('/', index);
