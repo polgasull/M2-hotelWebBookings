@@ -73,7 +73,7 @@ router.post("/login", passport.authenticate("local", {
   failureFlash: true,
   passReqToCallback: true
 }),
-);
+
 
 router.get("/logout", (req, res, next) => {
   console.log('soy una mierda');
