@@ -5,7 +5,7 @@ const Booking = require("../models/booking");
 const Room = require("../models/room");
 const User = require("../models/user");
 
-router.post('/', (req, res, next) => {
+router.post('/', checkRoles('Admin'), (req, res, next) => {
     const checkInDate = req.body.checkInDate;
     const checkOutDate = req.body.checkOutDate;
 
@@ -19,7 +19,7 @@ router.post('/', (req, res, next) => {
     })
 });
 
-router.post('/:id/new', (req, res, next) => {
+router.post('/:id/new', checkRoles('Admin'), (req, res, next) => {
     console.log(req.body, "holi");
     const roomID = req.params.id;
     const checkInDate = req.body.checkInDate; 
